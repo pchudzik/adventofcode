@@ -1,10 +1,12 @@
 import pytest
 import importlib
 
-find_number_of_houses = importlib.import_module(
-    "03_houses").find_number_of_houses
-find_number_of_houses_with_robots = importlib.import_module(
-    "03_houses").find_number_of_houses_with_robots
+find_number_of_houses = importlib\
+    .import_module("03_houses")\
+    .find_number_of_houses
+find_number_of_houses_with_robots = importlib\
+    .import_module("03_houses")\
+    .find_number_of_houses_with_robots
 
 
 @pytest.mark.parametrize(

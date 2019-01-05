@@ -9,4 +9,7 @@ run-02:
 
 run-03:
 	pipenv run python 03_houses.py
+
+run-04:
+	pipenv run python 04_miner.py
 	

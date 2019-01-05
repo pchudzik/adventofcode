@@ -1,8 +1,12 @@
 import pytest
 import importlib
 
-count_floors = importlib.import_module("01_floors").count_floors
-first_basement_entry_position = importlib.import_module("01_floors").first_basement_entry_position
+count_floors = importlib\
+    .import_module("01_floors")\
+    .count_floors
+first_basement_entry_position = importlib\
+    .import_module("01_floors")\
+    .first_basement_entry_position
 
 
 @pytest.mark.parametrize(

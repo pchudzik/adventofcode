@@ -1,8 +1,12 @@
 import pytest
 import importlib
 
-calculate_wrapping_paper_area = importlib.import_module("02_wrapping_paper").calculate_wrapping_paper_area
-calculate_ribbon_length = importlib.import_module("02_wrapping_paper").calculate_ribbon_length
+calculate_wrapping_paper_area = importlib\
+    .import_module("02_wrapping_paper")\
+    .calculate_wrapping_paper_area
+calculate_ribbon_length = importlib\
+    .import_module("02_wrapping_paper")\
+    .calculate_ribbon_length
 
 
 @pytest.mark.parametrize(
@@ -13,6 +17,7 @@ calculate_ribbon_length = importlib.import_module("02_wrapping_paper").calculate
     ])
 def test_area_calculator(input, result):
     assert calculate_wrapping_paper_area(input) == result
+
 
 @pytest.mark.parametrize(
     "input, result", [
