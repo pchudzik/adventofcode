@@ -1,6 +1,3 @@
-test:
-	pipenv run pytest -svv
-
 run-01:
 	pipenv run python 01_floors.py
 
