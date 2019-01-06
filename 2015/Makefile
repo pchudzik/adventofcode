@@ -12,3 +12,6 @@ run-04:
 	
 run-05:
 	pipenv run python 05_nice_strings.py
+
+run-06:
+	pipenv run python 06_lights.py
