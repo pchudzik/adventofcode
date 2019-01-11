@@ -15,3 +15,15 @@ run-05:
 
 run-06:
 	pipenv run python 06_lights.py
+
+run-07:
+	pipenv run python 07_wires.py
+
+run-08:
+	pipenv run python 08_strings_length.py
+
+run-09:
+	pipenv run python 09_routes.py
+
+run-10:
+	pipenv run python 10_look_and_say.py
