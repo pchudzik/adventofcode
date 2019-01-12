@@ -30,3 +30,6 @@ run-10:
 
 run-11:
 	pipenv run python 11_password_generator.py
+
+run-12:
+	pipenv run python 12_number_counter.py
