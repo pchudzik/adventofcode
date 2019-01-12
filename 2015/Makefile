@@ -27,3 +27,6 @@ run-09:
 
 run-10:
 	pipenv run python 10_look_and_say.py
+
+run-11:
+	pipenv run python 11_password_generator.py
