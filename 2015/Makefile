@@ -36,3 +36,6 @@ run-12:
 
 run-13:
 	pipenv run python 13_seatings.py
+
+run-14:
+	pipenv run python 14_raindeer_olympics.py
