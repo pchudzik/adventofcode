@@ -4,9 +4,11 @@ import json
 """
 --- Day 12: JSAbacusFramework.io ---
 
-Santa's Accounting-Elves need help balancing the books after a recent order. Unfortunately, their accounting software uses a peculiar storage format. That's where you come in.
+Santa's Accounting-Elves need help balancing the books after a recent order. Unfortunately, their accounting software
+uses a peculiar storage format. That's where you come in.
 
-They have a JSON document which contains a variety of things: arrays ([1,2,3]), objects ({"a":1, "b":2}), numbers, and strings. Your first job is to simply find all of the numbers throughout the document and add them together.
+They have a JSON document which contains a variety of things: arrays ([1,2,3]), objects ({"a":1, "b":2}), numbers, and
+strings. Your first job is to simply find all of the numbers throughout the document and add them together.
 
 For example:
 
@@ -24,7 +26,8 @@ Your puzzle answer was 119433.
 
 Uh oh - the Accounting-Elves have realized that they double-counted everything red.
 
-Ignore any object (and all of its children) which has any property with the value "red". Do this only for objects ({...}), not arrays ([...]).
+Ignore any object (and all of its children) which has any property with the value "red". Do this only for objects
+({...}), not arrays ([...]).
 
 [1,2,3] still has a sum of 6.
 [1,{"c":"red","b":2},3] now has a sum of 4, because the middle object is ignored.
