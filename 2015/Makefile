@@ -39,3 +39,6 @@ run-13:
 
 run-14:
 	pipenv run python 14_raindeer_olympics.py
+
+run-15:
+	pipenv run python 15_ingredients.py
