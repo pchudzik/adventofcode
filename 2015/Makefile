@@ -51,3 +51,6 @@ run-17:
 
 run-18:
 	pipenv run python 18_lights2.py
+
+run-19:
+	pipenv run python 19_molecules.py
