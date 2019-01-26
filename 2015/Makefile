@@ -54,3 +54,6 @@ run-18:
 
 run-19:
 	pipenv run python 19_molecules.py
+
+run-20:
+	pipenv run python 20_presents.py
