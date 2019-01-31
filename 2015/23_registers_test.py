@@ -1,7 +1,7 @@
 import importlib
 import pytest
 
-registers_module = importlib.import_module("22_registers")
+registers_module = importlib.import_module("23_registers")
 parse_operations = registers_module.parse_operations
 Program = registers_module.Program
 
