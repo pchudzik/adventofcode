@@ -63,3 +63,6 @@ run-21:
 
 run-23:
 	pipenv run python 23_registers.py
+
+run-25:
+	pipenv run python 25_codes.py
