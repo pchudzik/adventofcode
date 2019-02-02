@@ -61,6 +61,9 @@ run-20:
 run-21:
 	pipenv run python 21_rpg.py
 
+run-22:
+	pipenv run python 22_rpg_wizard.py
+
 run-23:
 	pipenv run python 23_registers.py
 
