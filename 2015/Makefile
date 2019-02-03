@@ -67,5 +67,8 @@ run-22:
 run-23:
 	pipenv run python 23_registers.py
 
+run-24:
+	pipenv run python 24_balance.py
+
 run-25:
 	pipenv run python 25_codes.py
