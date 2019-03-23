@@ -1,2 +1,8 @@
 run-01:
 	pipenv run python 01_city_navigation.py
+
+run-02:
+	pipenv run python 02_bathroom_code.py
+
+run-03:
+	pipenv run python 03_triangle.py
