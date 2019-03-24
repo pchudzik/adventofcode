@@ -6,3 +6,6 @@ run-02:
 
 run-03:
 	pipenv run python 03_triangle.py
+
+run-04:
+	pipenv run python 04_code.py
