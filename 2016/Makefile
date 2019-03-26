@@ -9,3 +9,6 @@ run-03:
 
 run-04:
 	pipenv run python 04_code.py
+
+run-05:
+	pipenv run python 05_hash.py
