@@ -12,3 +12,6 @@ run-04:
 
 run-05:
 	pipenv run python 05_hash.py
+
+run-06:
+	pipenv run python 06_repetition_code.py
