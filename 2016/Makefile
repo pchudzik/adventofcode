@@ -15,3 +15,6 @@ run-05:
 
 run-06:
 	pipenv run python 06_repetition_code.py
+
+run-07:
+	pipenv run python 07_ips.py
