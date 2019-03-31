@@ -18,3 +18,6 @@ run-06:
 
 run-07:
 	pipenv run python 07_ips.py
+
+run-08:
+	pipenv run python 08_display.py
