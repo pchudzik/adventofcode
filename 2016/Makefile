@@ -21,3 +21,6 @@ run-07:
 
 run-08:
 	pipenv run python 08_display.py
+
+run-09:
+	pipenv run python 09_compression.py
