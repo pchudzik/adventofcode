@@ -24,3 +24,6 @@ run-08:
 
 run-09:
 	pipenv run python 09_compression.py
+
+run-10:
+	pipenv run python 10_bots.py
