@@ -27,3 +27,12 @@ run-09:
 
 run-10:
 	pipenv run python 10_bots.py
+
+run-11:
+	pipenv run python 11_transporter.py
+
+run-12:
+	pipenv run python 12_assembly.py
+
+run-13:
+	pipenv run python 13_office_maze.py
