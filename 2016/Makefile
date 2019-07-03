@@ -36,3 +36,6 @@ run-12:
 
 run-13:
 	pipenv run python 13_office_maze.py
+
+run-14:
+	pipenv run python 14_one_time_pad.py
