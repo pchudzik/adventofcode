@@ -39,3 +39,6 @@ run-13:
 
 run-14:
 	pipenv run python 14_one_time_pad.py
+
+run-15:
+	pipenv run python 15_timing_is_everything.py
