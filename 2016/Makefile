@@ -42,3 +42,6 @@ run-14:
 
 run-15:
 	pipenv run python 15_timing_is_everything.py
+
+run-16:
+	pipenv run python 16_dragon_checksum.py
