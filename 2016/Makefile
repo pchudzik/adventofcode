@@ -48,3 +48,6 @@ run-16:
 
 run-17:
 	pipenv run python 17_two_steps_forward.py
+
+run-18:
+	pipenv run python 18_like_a_rogue.py
