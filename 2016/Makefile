@@ -51,3 +51,6 @@ run-17:
 
 run-18:
 	pipenv run python 18_like_a_rogue.py
+
+run-19:
+	pipenv run python 19_an_elephant_named_joseph.py
