@@ -57,3 +57,6 @@ run-19:
 
 run-20:
 	pipenv run python 20_firewall_rules.py
+
+run-21:
+	pipenv run python 21_scrambled_letters_and_hash.py
