@@ -60,3 +60,6 @@ run-20:
 
 run-21:
 	pipenv run python 21_scrambled_letters_and_hash.py
+
+run-22:
+	pipenv run python 22_grid_computing.py
