@@ -63,3 +63,6 @@ run-21:
 
 run-22:
 	pipenv run python 22_grid_computing.py
+
+run-23:
+	pipenv run python 23_safe_cracking.py
