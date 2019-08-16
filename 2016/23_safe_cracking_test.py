@@ -102,12 +102,12 @@ def test_tgl_tgl():
         [
             parser("tgl a"),
             parser("tgl a")],
-    registry={
-        'a':Value(1),
-        'b':Value(0),
-        'c':Value(0),
-        'd':Value(0),
-    })
+        registry={
+            'a': Value(1),
+            'b': Value(0),
+            'c': Value(0),
+            'd': Value(0)
+        })
 
     cpu.run()
 
@@ -122,6 +122,14 @@ def test_tgl_out_of_scope():
     cpu.run()
 
     assert cpu.registry['a'].value == 1
+
+
+def test_mul():
+    cpu = Cpu([parser("cpy 10 b"), parser("cpy 10 d"), parser("mul b d a")])
+
+    cpu.run()
+
+    assert cpu.registry['a'].value == 100
 
 
 def test_program():
