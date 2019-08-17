@@ -66,3 +66,6 @@ run-22:
 
 run-23:
 	pipenv run python 23_safe_cracking.py
+
+run-24:
+	pipenv run python 24_air_duct_spelunking.py
