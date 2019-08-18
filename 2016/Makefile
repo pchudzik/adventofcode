@@ -69,3 +69,6 @@ run-23:
 
 run-24:
 	pipenv run python 24_air_duct_spelunking.py
+
+run-25:
+	pipenv run python 25_clock_signal.py
