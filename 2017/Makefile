@@ -3,3 +3,6 @@ run-01:
 
 run-02:
 	pipenv run python 02_corruption_checksum.py
+
+run-03:
+	pipenv run python 03_spiral_memory.py
