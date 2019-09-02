@@ -6,3 +6,6 @@ run-02:
 
 run-03:
 	pipenv run python 03_spiral_memory.py
+
+run-04:
+	pipenv run python 4_high_entropy_passphrases.py
