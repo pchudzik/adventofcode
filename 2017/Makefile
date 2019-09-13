@@ -9,3 +9,6 @@ run-03:
 
 run-04:
 	pipenv run python 4_high_entropy_passphrases.py
+
+run-05:
+	pipenv run python 5_maze_of_twisty_trampolines.py
