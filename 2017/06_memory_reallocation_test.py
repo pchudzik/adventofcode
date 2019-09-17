@@ -1,7 +1,7 @@
 import importlib
 import pytest
 
-module = importlib.import_module("6_memory_reallocation")
+module = importlib.import_module("06_memory_reallocation")
 run_redistribution = module.run_redistribution
 find_cycle = module.find_cycle
 

@@ -1,6 +1,6 @@
 import importlib
 
-module = importlib.import_module("5_maze_of_twisty_trampolines")
+module = importlib.import_module("05_maze_of_twisty_trampolines")
 count_jumps_1 = module.count_jumps_1
 count_jumps_2 = module.count_jumps_2
 Program = module.Program

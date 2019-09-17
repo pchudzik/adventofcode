@@ -1,7 +1,7 @@
 import importlib
 import pytest
 
-module = importlib.import_module("4_high_entropy_passphrases")
+module = importlib.import_module("04_high_entropy_passphrases")
 has_no_duplicated_words = module.has_no_duplicated_words
 has_no_anagrams = module.has_no_anagrams
 find_valid_passphases = module.find_valid_passphases

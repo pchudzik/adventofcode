@@ -76,7 +76,7 @@ def find_valid_passphases(validator, passwords):
 
 
 if __name__ == "__main__":
-    with open("4_high_entropy_passphrases.txt") as file:
+    with open("04_high_entropy_passphrases.txt") as file:
         passwords = [line.strip() for line in file.readlines()]
         print(f"part1: {len(find_valid_passphases(has_no_duplicated_words, passwords))}")
         print(f"part2: {len(find_valid_passphases(has_no_anagrams, passwords))}")

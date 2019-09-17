@@ -104,7 +104,7 @@ def _count_jumps(puzzle, offset_modifier):
 
 
 if __name__ == "__main__":
-    with open("5_maze_of_twisty_trampolines.txt") as file:
+    with open("05_maze_of_twisty_trampolines.txt") as file:
         puzzle = [int(line.strip()) for line in file.readlines()]
         print(f"part1: {count_jumps_1(puzzle)}")
         print(f"part2: {count_jumps_2(puzzle)}")
