@@ -21,9 +21,10 @@ def test_run_cycle(in_state, out_state):
 def test_find_cycle():
     input_state = (0, 2, 7, 0)
 
-    result = find_cycle(input_state)
+    all_seen_states, cycling_state = find_cycle(input_state)
 
-    assert result == {
+    assert cycling_state == (2, 4, 1, 2)
+    assert all_seen_states == {
         (0, 2, 7, 0),
         (2, 4, 1, 2),
         (3, 1, 2, 3),
