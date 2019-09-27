@@ -49,32 +49,38 @@ def find_weight_of_children(stack, root_program_name):
     return weight
 
 
-def _find_not_balanced_stack(all_weights):
-    counts = collections.defaultdict(int)
-    for name, weight in all_weights:
-        counts[weight] += 1
-
-    weights = list(sorted(
-        counts.items(),
-        key=lambda weight_count: weight_count[1]))
-
-    not_balanced_weight, expected_weight = weights[0][0], weights[1][0]
-
-    for name, weight in all_weights:
-        if weight == not_balanced_weight:
-            if expected_weight > not_balanced_weight:
-                return name, not_balanced_weight - expected_weight
-            else:
-                return name, expected_weight - not_balanced_weight
-
-
 def balance_tower(stack):
-    root_program = find_root_program(stack)
-    all_weights = [(child.name, find_weight_of_children(stack, child.name)) for child in root_program.children]
-    not_balanced_stack, expected_weight_difference = _find_not_balanced_stack(all_weights)
-    not_balanced_program = stack[not_balanced_stack]
-    #That's not the right answer; your answer is too high. If you're stuck, there are some general tips on the about page, or you can ask for hints on the subreddit. Please wait one minute before trying again. (You guessed 39159.
-    return not_balanced_stack, not_balanced_program.weight + expected_weight_difference
+    leafs = collections.deque([leaf for leaf in stack.values() if len(leaf.children) == 0])
+    checked = set()
+
+    while len(leafs) > 0:
+        parent = leafs.popleft()
+        if parent.name in checked:
+            continue
+        is_balanced, not_balanced_node, node_weight = _is_tree_balanced(stack, parent)
+        if not is_balanced:
+            return not_balanced_node.name, node_weight
+        else:
+            if parent.parent is not None:
+                leafs.append(parent.parent)
+
+
+def _is_tree_balanced(stack, root):
+    all_weights = dict((child, find_weight_of_children(stack, child.name)) for child in root.children)
+    weights_occurrences = collections.defaultdict(int)
+    for weight in all_weights.values():
+        weights_occurrences[weight] += 1
+
+    if len(weights_occurrences) <= 1:
+        return True, None, None
+
+    not_matching_weight = [weight for weight, count in weights_occurrences.items() if count == 1][0]
+    expected_weight = [weight for weight, count in weights_occurrences.items() if count > 1][0]
+
+    for node, weight in all_weights.items():
+        if weight == not_matching_weight:
+            weight_difference = expected_weight - not_matching_weight
+            return False, node, node.weight + weight_difference
 
 
 if __name__ == "__main__":
