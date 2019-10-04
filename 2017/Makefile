@@ -15,3 +15,12 @@ run-05:
 
 run-06:
 	pipenv run python 06_memory_reallocation.py
+
+run-07:
+	pipenv run python 07_recursive_circus.py
+
+run-08:
+	pipenv run python 08_i_heard_you_like_registers.py
+
+run-09:
+	pipenv run python 09_stream_processing.py
