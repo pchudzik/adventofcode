@@ -24,3 +24,6 @@ run-08:
 
 run-09:
 	pipenv run python 09_stream_processing.py
+
+run-10:
+	pipenv run python 10_knot_hash.py
