@@ -1,6 +1,7 @@
-def rotate(items, positions):
-    current_position = 0
-    skip = 0
+from functools import reduce
+
+
+def single_round(items, positions, current_position=0, skip=0):
     for position in positions:
         item_indexes_to_rotate_src = _find_range(items, current_position, position)
         item_indexes_to_rotate_dst = list(reversed(item_indexes_to_rotate_src))
@@ -13,7 +14,42 @@ def rotate(items, positions):
         current_position = _next_position(items, current_position, position, skip)
         skip += 1
 
-    return items
+    return items, current_position, skip
+
+
+def knot_hash(puzzle):
+    number_of_rounds = 64
+    const_suffix = [17, 31, 73, 47, 23]
+
+    lenghts = list(bytearray(puzzle, "utf8")) + const_suffix
+    current_position = 0
+    skip = 0
+
+    items = list(range(256))
+    for i in range(number_of_rounds):
+        items, current_position, skip = single_round(items, lenghts, current_position, skip)
+
+    return "".join(_to_hex_string(_dense_hash(items)))
+
+
+def _to_hex_string(items):
+    return [
+        "{0:0{1}x}".format(item, 2)
+        for item in items
+    ]
+
+
+def _dense_hash(items):
+    word_size = 16
+    items = [items[i:i + word_size] for i in range(0, len(items), word_size)]
+    return [
+        reduce(xor, characters)
+        for characters in items
+    ]
+
+
+def xor(a, b):
+    return a ^ b
 
 
 def _next_position(puzzle, current_position, position, skip):
@@ -40,6 +76,9 @@ def _find_range(puzzle, current_position, position):
 
 if __name__ == "__main__":
     positions = [63, 144, 180, 149, 1, 255, 167, 84, 125, 65, 188, 0, 2, 254, 229, 24]
-    result = rotate(list(range(256)), positions)
+    positions_part2 = ",".join(str(p) for p in positions)
 
-    print(f"part1: {result[0] * result[1]}")
+    part1 = single_round(list(range(256)), positions)[0]
+
+    print(f"part1: {part1[0] * part1[1]}")
+    print(f"part2: {knot_hash(positions_part2)}")
