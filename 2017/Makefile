@@ -27,3 +27,6 @@ run-09:
 
 run-10:
 	pipenv run python 10_knot_hash.py
+
+run-11:
+	pipenv run python 11_hex_ed.py
