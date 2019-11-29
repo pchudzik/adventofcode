@@ -33,3 +33,6 @@ run-11:
 
 run-12:
 	pipenv run python 12_digital_plumber.py
+
+run-13:
+	pipenv run python 13_packet_scanners.py

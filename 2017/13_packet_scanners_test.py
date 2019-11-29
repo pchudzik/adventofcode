@@ -6,7 +6,7 @@ module = importlib.import_module("13_packet_scanners")
 parse_firewall = module.parse_firewall
 transmit_packet = module.transmit_packet
 find_delay_time_without_damage = module.find_delay_time_without_damage
-Firewall = module.Firewall
+firewall_layer = module.firewall_layer
 
 schematics = [
     "0: 3",
@@ -24,48 +24,29 @@ def test_parse_firewall():
     assert firewall[4].depth == 4
     assert firewall[6].depth == 4
 
-    for index in [0, 1, 4, 6]:
-        assert firewall[index].position == 0
-
-    assert firewall[3].is_empty
-    assert firewall[5].is_empty
-
-
-def test_tick_in_firewall():
-    firewall = Firewall(3)
-
-    assert firewall.position == 0
-
-    firewall.tick()
-    assert firewall.position == 1
-
-    firewall.tick()
-    assert firewall.position == 2
-
-    firewall.tick()
-    assert firewall.position == 1
-
-    firewall.tick()
-    assert firewall.position == 0
-
-    firewall.tick()
-    assert firewall.position == 1
+    assert not firewall[0](0)
+    assert not firewall[1](0)
+    assert firewall[2](0)
+    assert firewall[3](0)
+    assert not firewall[4](0)
+    assert firewall[5](0)
+    assert not firewall[6](0)
 
 
 @pytest.mark.parametrize(
     "depth, when_fail", [
-        # (2, [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]),
-        (3, [1, 5, 9, 13, 17, 21]),
-        (4, [1, 7, 13, 19, 25, 31]),
-        (5, [1, 9, 17, 25, 33, 41, 49]),
-        (6, [1, 11, 21, 31, 41]),
-        (7, [1, 13, 25, 37, 49])])
+        (2, [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]),
+        (3, [0, 4, 8, 12, 16, 20]),
+        (4, [0, 6, 12, 18, 24, 30]),
+        (5, [0, 8, 16, 24, 32, 40, 48]),
+        (6, [0, 10, 20, 30, 40]),
+        (7, [0, 12, 24, 36, 48])])
 def test_can_pass_in_firewall(depth, when_fail):
-    firewall = Firewall(depth)
+    firewall = firewall_layer(depth)
 
     for time in range(1, max(when_fail) + 1):
         can_pass = time not in when_fail
-        assert firewall.can_pass(time) == can_pass, f"for time {time} expected can_pass to be {can_pass}"
+        assert firewall(time) == can_pass, f"for time {time} expected can_pass to be {can_pass}"
 
 
 def test_transmit_packet():
