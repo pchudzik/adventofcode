@@ -32,7 +32,7 @@ def test_find_used_space():
 
 
 def test_find_regons():
-    assert find_regions("flqrgnkx") == 1242
+    assert find_regions(disk_layout()) == 1242
 
 
 def disk_layout():
