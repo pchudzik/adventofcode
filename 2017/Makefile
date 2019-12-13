@@ -39,3 +39,7 @@ run-13:
 
 run-14:
 	pipenv run python 14_disk_defragmentation.py
+
+run-15:
+	pipenv run python 15_dueling_generators.py
+
