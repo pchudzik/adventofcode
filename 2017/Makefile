@@ -43,3 +43,5 @@ run-14:
 run-15:
 	pipenv run python 15_dueling_generators.py
 
+run-16:
+	pipenv run python 16_permutation_promenade.py

@@ -1,7 +1,58 @@
+"""
+--- Day 16: Permutation Promenade ---
+
+You come upon a very unusual sight; a group of programs here appear to be dancing.
+
+There are sixteen programs in total, named a through p. They start by standing in a line: a stands in position 0, b
+stands in position 1, and so on until p, which stands in position 15.
+
+The programs' dance consists of a sequence of dance moves:
+
+Spin, written sX, makes X programs move from the end to the front, but maintain their order otherwise. (For example, s3
+on abcde produces cdeab).
+
+Exchange, written xA/B, makes the programs at positions A and B swap places.
+
+Partner, written pA/B, makes the programs named A and B swap places.
+
+For example, with only five programs standing in a line (abcde), they could do the following dance:
+
+s1, a spin of size 1: eabcd.
+x3/4, swapping the last two programs: eabdc.
+pe/b, swapping programs e and b: baedc.
+
+After finishing their dance, the programs end up in order baedc.
+
+You watch the dance for a while and record their dance moves (your puzzle input). In what order are the programs
+standing after their dance?
+
+Your puzzle answer was kpfonjglcibaedhm.
+
+--- Part Two ---
+
+Now that you're starting to get a feel for the dance moves, you turn your attention to the dance as a whole.
+
+Keeping the positions they ended up in from their previous dance, the programs perform it again and again: including the
+first dance, a total of one billion (1000000000) times.
+
+In the example above, their second dance would begin with the order baedc, and use the same dance moves:
+
+s1, a spin of size 1: cbaed.
+x3/4, swapping the last two programs: cbade.
+pe/b, swapping programs e and b: ceadb.
+
+In what order are the programs standing after their billion dances?
+
+Your puzzle answer was odiabmplhfgjcekn.
+
+Both parts of this puzzle are complete! They provide two gold stars: **
+"""
+
+
 def dance(program, cmds):
     for cmd in cmds:
         program = cmd(program)
-    return tuple(program)
+    return program
 
 
 def parse_cmd(cmd):
@@ -30,7 +81,7 @@ def exchange(src, dst):
         a, b = program[src], program[dst]
         program[src] = b
         program[dst] = a
-        return program
+        return "".join(program)
 
     return action
 
@@ -44,53 +95,31 @@ def spin(number):
     return action
 
 
-def part2(program, cmds):
+def _find_cycle(program, cmds):
     states = dict()
-    seen = list()
-    program = tuple(program)
+    cycle = [program]
 
     while True:
-        if program in states:
+        output = dance(program, cmds)
+        if output in states:
             break
-        else:
-            output = dance(program, cmds)
-            states[program] = output
-            program = output
-            seen.append("".join(output))
+        states[program] = output
+        cycle.append(output)
+        program = output
 
-    start_index = seen.index("".join(program))
-    # cycle = states.values()
-    cycle = (1_000_000_000 - len(states)) % len(states)
-    return seen[cycle]
+    return cycle
 
+
+def dance_many(program, cmds, x):
+    cycle = _find_cycle(program, cmds)
+    last_loop_break_index = x % len(cycle)
+    return cycle[last_loop_break_index]
 
 
 if __name__ == "__main__":
     with open("16_permutation_promenade.txt") as file:
-        puzzle = file.read().split(",")
-        program = tuple([*"abcdefghijklmnop"])
-        states = dict()
-        cmds = [parse_cmd(c) for c in puzzle]
-        hit, miss = 0, 0
-        # find cycle
-        # x = moves until cycle
-        # reszta z dzielenia y = (1_000_000_000 - x)  // x
-        # rotate result y times
+        cmds = [parse_cmd(cmd) for cmd in file.read().split(",")]
+        program = "abcdefghijklmnop"
 
-        print(part2(program, cmds))
-        for i in range(1_000_000_000):
-            if program in states:
-                output = states[program]
-                hit += 1
-            else:
-                output = dance(program, cmds)
-                states[program] = output
-                miss += 1
-
-            program = output
-
-            if i == 0:
-                print(f"part1: {''.join(program)}")
-            if i % 4_000_000 == 0:
-                print(f"progress={i / 1_000_000_000 * 100}, hit={hit}, miss={miss}, i={i}")
-        print(f"part2 {''.join(program)}")
+        print(f"part 1: {dance(program, cmds)}")
+        print(f"part 2: {dance_many(program, cmds, 1_000_000_000)}")
