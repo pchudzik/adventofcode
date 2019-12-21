@@ -1,4 +1,4 @@
-"""
+r"""
 --- Day 11: Hex Ed ---
 
 Crossing the bridge, you've barely reached the other side of the stream when a program comes up to you, clearly in

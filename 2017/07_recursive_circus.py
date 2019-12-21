@@ -1,4 +1,4 @@
-"""
+r"""
 --- Day 7: Recursive Circus ---
 
 Wandering further through the circuits of the computer, you come upon a tower of programs that have gotten themselves

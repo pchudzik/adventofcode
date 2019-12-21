@@ -1,4 +1,4 @@
-"""
+r"""
 --- Day 10: Knot Hash ---
 
 You come across some programs that are trying to implement a software emulation of a hash based on knot-tying. The hash
@@ -41,7 +41,7 @@ Suppose we instead only had a circular list containing five elements, 0, 1, 2, 3
 * The current position moves forward by the length plus the skip size, a total of 5, causing it not to move because it
   wraps around: 4 3 0 [1] 2. The skip size increases to 2.
 * The third length, 1, selects a sublist of a single element, and so reversing it has no effect.
-* The current position moves forward by the length (1) plus the skip size (2): 4 [3] 0 1 2. The skip size increases to 3.
+* The current position moves forward by the length (1) plus the skip size (2): 4 [3] 0 1 2. The skip size increases to 3
 * The fourth length, 5, selects every element starting with the second: 4) ([3] 0 1 2. Reversing this sublist (3 0 1 2 4
   into 4 2 1 0 3) produces: 3) ([4] 2 1 0.
 * Finally, the current position moves forward by 8: 3 4 2 1 [0]. The skip size increases to 4.
