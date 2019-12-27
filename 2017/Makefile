@@ -45,3 +45,6 @@ run-15:
 
 run-16:
 	pipenv run python 16_permutation_promenade.py
+
+run-17:
+	pipenv run python 17_spinlock.py
