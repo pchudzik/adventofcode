@@ -2,11 +2,15 @@ import importlib
 
 module = importlib.import_module("18_duet")
 CPU = module.CPU
-parser = module.parser
+Register = module.Register
+parser1 = module.parser1
+execute_part1 = module.execute_part1
+execute_part2 = module.execute_part2
 
+empty_snd_card = None
 
 def test_set_cmd():
-    cpu = CPU(parser(["set a 123"]))
+    cpu = CPU(parser1(empty_snd_card, ["set a 123"]))
 
     cpu.tick()
 
@@ -14,7 +18,7 @@ def test_set_cmd():
 
 
 def test_add_cmd():
-    cpu = CPU(parser([
+    cpu = CPU(parser1(empty_snd_card, [
         "set a 10",
         "set b 10",
         "add a b"
@@ -29,7 +33,7 @@ def test_add_cmd():
 
 
 def test_mul_cmd():
-    cpu = CPU(parser([
+    cpu = CPU(parser1(empty_snd_card, [
         "set a 10",
         "set b 10",
         "mul a b"
@@ -44,7 +48,8 @@ def test_mul_cmd():
 
 
 def test_snd_cmd():
-    cpu = CPU(parser([
+    snd_card = Register(None)
+    cpu = CPU(parser1(snd_card, [
         "set a 10",
         "snd a"
     ]))
@@ -52,11 +57,11 @@ def test_snd_cmd():
     cpu.tick()
     cpu.tick()
 
-    assert cpu.played == 10
+    assert snd_card.value == 10
 
 
 def test_jgz_cmd_negative():
-    cpu = CPU(parser([
+    cpu = CPU(parser1(empty_snd_card, [
         "set a 10",
         "jgz a -1"
     ]))
@@ -68,7 +73,7 @@ def test_jgz_cmd_negative():
 
 
 def test_jgz_cmd_positive():
-    cpu = CPU(parser([
+    cpu = CPU(parser1(empty_snd_card, [
         "set a 10",
         "jgz a 1",
         "set a 11",
@@ -81,33 +86,27 @@ def test_jgz_cmd_positive():
 
 
 def test_rcv_pass_through():
-    cpu = CPU(parser([
+    played = execute_part1([
         "rcv a",
         "set a -10",
         "rcv a"
-    ]))
+    ])
 
-    cpu.execute()
-
-    assert cpu.offset == 3
-    assert cpu.played is None
+    assert played is None
 
 
 def test_stop_execution():
-    cpu = CPU(parser([
+    played = execute_part1([
         "set a 10",
         "snd a",
         "rcv a"
-    ]))
+    ])
 
-    cpu.execute()
-
-    assert cpu.offset == 2
-    assert cpu.played == 10
+    assert played == 10
 
 
 def test_example():
-    cpu = CPU(parser([
+    played = execute_part1([
         "set a 1",
         "add a 2",
         "mul a a",
@@ -118,8 +117,20 @@ def test_example():
         "jgz a -1",
         "set a 1",
         "jgz a -2"
-    ]))
+    ])
 
-    cpu.execute()
+    assert played == 4
 
-    assert cpu.played == 4
+
+def test_part2():
+    send_values = execute_part2([
+        "snd 1",
+        "snd 2",
+        "snd p",
+        "rcv a",
+        "rcv b",
+        "rcv c",
+        "rcv d"
+    ])
+
+    assert send_values == 3

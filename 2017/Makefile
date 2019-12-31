@@ -48,3 +48,6 @@ run-16:
 
 run-17:
 	pipenv run python 17_spinlock.py
+
+run-18:
+	pipenv run python 18_duet.py
