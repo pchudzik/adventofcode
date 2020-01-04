@@ -51,3 +51,6 @@ run-17:
 
 run-18:
 	pipenv run python 18_duet.py
+
+run-19:
+	pipenv run python 19_a_series_of_tubes.py
