@@ -5,6 +5,8 @@ parser = module.parser
 tick = module.tick
 manhatan_distance = module.manhatan_distance
 find_closest_to_zero = module.find_closest_to_zero
+tick_with_collisions = module.tick_with_collisions
+left_after_collisions = module.left_after_collisions
 
 
 def test_find_closes_to_zero():
@@ -83,3 +85,29 @@ def test_tick_particles():
     assert p1.position == (-8, 0, 0)
     assert p1.velocity == (-6, 0, 0)
     assert p1.acceleration == (-2, 0, 0)
+
+
+def test_exclude_collisions():
+    particles = parser([
+        "p=<-6,0,0>, v=< 3,0,0>, a=< 0,0,0>",
+        "p=<-4,0,0>, v=< 2,0,0>, a=< 0,0,0>",
+        "p=<-2,0,0>, v=< 1,0,0>, a=< 0,0,0>",
+        "p=< 3,0,0>, v=<-1,0,0>, a=< 0,0,0>"
+    ])
+
+    particles = tick_with_collisions(particles)
+    assert len(particles) == 4
+
+    particles = tick_with_collisions(particles)
+    assert len(particles) == 1
+
+def test_left_after_collisions():
+    particles = parser([
+        "p=<-6,0,0>, v=< 3,0,0>, a=< 0,0,0>",
+        "p=<-4,0,0>, v=< 2,0,0>, a=< 0,0,0>",
+        "p=<-2,0,0>, v=< 1,0,0>, a=< 0,0,0>",
+        "p=< 3,0,0>, v=<-1,0,0>, a=< 0,0,0>"
+    ])
+
+    left_particles = left_after_collisions(particles, iterations=10)
+    assert left_particles == 1

@@ -54,3 +54,6 @@ run-18:
 
 run-19:
 	pipenv run python 19_a_series_of_tubes.py
+
+run-20:
+	pipenv run python 20_particle_swarm.py
