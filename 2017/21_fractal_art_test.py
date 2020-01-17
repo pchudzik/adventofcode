@@ -5,6 +5,10 @@ module = importlib.import_module("21_fractal_art")
 pattern_reader = module.pattern_reader
 pattern_variants = module.pattern_variants
 divide_pattern = module.divide_pattern
+join_pattern = module.join_pattern
+rule_definition_parser = module.rule_definition_parser
+transform = module.transform
+lit_pixels = module.lit_pixels
 
 
 @pytest.mark.parametrize("input, pattern", [
@@ -23,31 +27,47 @@ def test_pattern_variants():
 
     assert set(pattern_variants(pattern)) == {
         (
-            ".#.\n"
-            "..#\n"
-            "###"),
-        (
-            "###\n"
-            "..#\n"
-            ".#."),
-        (
-            ".#.\n"
-            "#..\n"
-            "###"),
-        (
+            "##.\n"
+            "#.#\n"
+            "#.."
+        ), (
             "#..\n"
             "#.#\n"
-            "##.")
-    }
+            "##."
+        ), (
+            ".#.\n"
+            "#..\n"
+            "###"
+        ), (
+            "###\n"
+            "#..\n"
+            ".#."
+        ), (
+            "###\n"
+            "..#\n"
+            ".#."
+        ), (
+            "..#\n"
+            "#.#\n"
+            ".##"
+        ), (
+            ".#.\n"
+            "..#\n"
+            "###"
+        ), (
+            ".##\n"
+            "#.#\n"
+            "..#"
+        )}
 
 
 def test_divide_pattern_by_2():
     pattern = ("#..#\n"
                "....\n"
                "....\n"
-               "#..#")
+               "#..#").split("\n")
 
-    assert list(divide_pattern(pattern, 2)) == [
+    assert divide_pattern(pattern, 2) == [
         [
             (
                 "#.\n"
@@ -73,9 +93,9 @@ def test_divide_pattern_by_3():
                "#.#.#.\n"
                "..##..\n"
                ".#.#.#\n"
-               "##.##.")
+               "##.##.").split("\n")
 
-    assert list(divide_pattern(pattern, 3)) == [
+    assert divide_pattern(pattern, 3) == [
         [
             (
                 "#..\n"
@@ -95,5 +115,110 @@ def test_divide_pattern_by_3():
                 "#.#\n"
                 "##.")
         ]
-
     ]
+
+
+def test_join_pattern_2():
+    split = [
+        [
+            (
+                "#.\n"
+                ".."),
+            (
+                ".#\n"
+                "..")
+        ], [
+            (
+                "..\n"
+                "#."),
+            (
+                "..\n"
+                ".#")
+        ]
+    ]
+
+    assert join_pattern(split) == ("#..#\n"
+                                   "....\n"
+                                   "....\n"
+                                   "#..#")
+
+
+def test_join_pattern_by_3():
+    split = [
+        [
+            (
+                "#..\n"
+                "#.#\n"
+                "#.#"),
+            (
+                "##.\n"
+                "#.#\n"
+                ".#.")
+        ], [
+            (
+                "..#\n"
+                ".#.\n"
+                "##."),
+            (
+                "#..\n"
+                "#.#\n"
+                "##.")
+        ]
+    ]
+
+    assert join_pattern(split) == ("#..##.\n"
+                                   "#.##.#\n"
+                                   "#.#.#.\n"
+                                   "..##..\n"
+                                   ".#.#.#\n"
+                                   "##.##.")
+
+
+def test_rule_definition_parser():
+    rules = [
+        "../.# => ##./#../...",
+        ".#./..#/### => #..#/..../..../#..#"
+    ]
+
+    assert rule_definition_parser(rules) == {
+        "..\n.#": "##.\n#..\n...",
+        ".#.\n..#\n###": "#..#\n....\n....\n#..#"
+    }
+
+
+def test_transform():
+    rules = rule_definition_parser([
+        "../.# => ##./#../...",
+        ".#./..#/### => #..#/..../..../#..#"
+    ])
+    pattern = (".#.\n"
+               "..#\n"
+               "###")
+
+    pattern = transform(pattern, rules, 1)
+
+    assert pattern == ("#..#\n"
+                       "....\n"
+                       "....\n"
+                       "#..#")
+
+    pattern = transform(pattern, rules, 1)
+
+    assert pattern == ("##.##.\n"
+                       "#..#..\n"
+                       "......\n"
+                       "##.##.\n"
+                       "#..#..\n"
+                       "......")
+
+
+def test_sample():
+    rules = rule_definition_parser([
+        "../.# => ##./#../...",
+        ".#./..#/### => #..#/..../..../#..#"
+    ])
+    pattern = (".#.\n"
+               "..#\n"
+               "###")
+
+    assert lit_pixels(pattern, rules, 2) == 12
