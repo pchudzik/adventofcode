@@ -57,78 +57,87 @@ def test_burst_when_infected():
 
 
 """
--1, 1  | 0, 1   | 1, 1
--1, 0  | 0, 0   | 1, 0
--1, -1 | 0, -1  | 1, -1
+0,0 | 0,1 | 0,2
+1,0 | 1,1 | 1,2
+2,0 | 2,1,| 2,2
 """
 
 
 def test_next_move__current_infected_moving_right():
     grid = Grid([])
 
-    grid.infect(0, 0)
+    grid.infect(1, 1)
 
-    assert next_move(grid, (0, 0), (1, 0)) == (0, 1)
+    assert next_move(grid, (1, 1), (1, 2)) == (0, 1)
 
 
 def test_next_move__current_clean_moving_right():
     grid = Grid([])
 
-    assert next_move(grid, (0, 0), (1, 0)) == (0, -1)
+    assert next_move(grid, (1, 1), (1, 2)) == (2, 1)
 
 
 def test_next_move__current_infected_moving_left():
     grid = Grid([])
 
-    grid.infect(0, 0)
+    grid.infect(1, 1)
 
-    assert next_move(grid, (0, 0), (-1, 0)) == (0, -1)
+    assert next_move(grid, (1, 1), (1, 0)) == (2, 1)
 
 
 def test_next_move__current_clean_moving_left():
     grid = Grid([])
 
-    assert next_move(grid, (0, 0), (-1, 0)) == (0, 1)
+    assert next_move(grid, (1, 1), (1, 0)) == (0, 1)
 
 
 def test_next_move__current_infected_moving_up():
     grid = Grid([])
 
-    grid.infect(0, 0)
+    grid.infect(1, 1)
 
-    assert next_move(grid, (0, 0), (0, -1)) == (1, 0)
+    assert next_move(grid, (1, 1), (2, 1)) == (1, 2)
 
 
 def test_next_move__current_clean_moving_up():
     grid = Grid([])
 
-    assert next_move(grid, (0, 0), (0, -1)) == (-1, 0)
+    assert next_move(grid, (1, 1), (2, 1)) == (1, 0)
 
 
 def test_next_move__current_infected_moving_down():
     grid = Grid([])
 
-    grid.infect(0, 0)
+    grid.infect(1, 1)
 
-    assert next_move(grid, (0, 0), (0, 1)) == (-1, 0)
+    assert next_move(grid, (1, 1), (0, 1)) == (1, 0)
 
 
 def test_next_move__current_clean_moving_down():
     grid = Grid([])
 
-    assert next_move(grid, (0, 0), (0, 1)) == (1, 0)
+    assert next_move(grid, (1, 1), (0, 1)) == (1, 2)
 
 
-def test_virus_carrier():
-    grid = Grid([(-1, 0), (1, 1)])
+def test_virus_carrier_7_2():
+    grid = Grid([(0, 2), (1, 0)])
 
-    virus_carrier(7, (0, 0), grid)
+    virus_carrier(7, (1, 1), grid)
 
     assert grid.started_infection == 5
 
-def test_virus_carrier():
-    grid = Grid([(-1, 0), (1, 1)])
 
-    virus_carrier(10000, (0, 0), grid)
+def test_virus_carrier_70_2():
+    grid = Grid([(0, 2), (1, 0)])
+
+    virus_carrier(70, (1, 1), grid)
+
+    assert grid.started_infection == 41
+
+
+def test_virus_carrier_10000_2():
+    grid = Grid([(0, 2), (1, 0)])
+
+    virus_carrier(10000, (1, 1), grid)
 
     assert grid.started_infection == 5587
