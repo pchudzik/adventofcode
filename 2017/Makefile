@@ -60,3 +60,6 @@ run-20:
 
 run-21:
 	pipenv run python 21_fractal_art.py
+
+run-22:
+	pipenv run python 22_sporifica_virus.py
