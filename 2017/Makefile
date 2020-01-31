@@ -63,3 +63,6 @@ run-21:
 
 run-22:
 	pipenv run python 22_sporifica_virus.py
+
+run-23:
+	pipenv run python 23_coprocessor_conflagration.py
