@@ -66,3 +66,6 @@ run-22:
 
 run-23:
 	pipenv run python 23_coprocessor_conflagration.py
+
+run-24:
+	pipenv run python 24_electromagnetic_moat.py
