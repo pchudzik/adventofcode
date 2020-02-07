@@ -69,3 +69,6 @@ run-23:
 
 run-24:
 	pipenv run python 24_electromagnetic_moat.py
+
+run-25:
+	pipenv run python 25_the_halting_problem.py
