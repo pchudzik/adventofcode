@@ -1,2 +1,8 @@
 run-01:
 	pipenv run python 01_chronal_calibration.py
+
+run-02:
+	pipenv run python 02_inventory_management_system.py
+
+run-03:
+	pipenv run python 03_no_matter_how_you_slice_it.py
