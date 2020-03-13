@@ -12,3 +12,6 @@ run-04:
 
 run-05:
 	pipenv run python 05_alchemical_reduction.py
+
+run-06:
+	pipenv run python 06_chronal_coordinates.py
