@@ -15,3 +15,6 @@ run-05:
 
 run-06:
 	pipenv run python 06_chronal_coordinates.py
+
+run-07:
+	pipenv run python 07_the_sum_of_its_parts.py
