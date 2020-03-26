@@ -18,3 +18,6 @@ run-06:
 
 run-07:
 	pipenv run python 07_the_sum_of_its_parts.py
+
+run-08:
+	pipenv run python 08_memory_maneuver.py
