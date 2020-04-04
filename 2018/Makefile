@@ -24,3 +24,6 @@ run-08:
 
 run-09:
 	pipenv run python 09_marble_mania.py
+
+run-10:
+	pipenv run python 10_the_stars_align.py
