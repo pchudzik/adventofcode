@@ -27,3 +27,6 @@ run-09:
 
 run-10:
 	pipenv run python 10_the_stars_align.py
+
+run-11:
+	pipenv run python 11_chronal_charge.py
