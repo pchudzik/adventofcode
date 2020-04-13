@@ -3,6 +3,7 @@ import importlib
 
 module = importlib.import_module("12_subterranean_sustainability")
 parse = module.parse
+state_value = module.state_value
 
 
 def test_parse_input(puzzle):
@@ -25,8 +26,7 @@ def test_parse_input(puzzle):
 
     parsed = parse(puzzle)
 
-    assert str(parsed.state) == "#..#.#..##......###...###"
-    assert parsed.zero_index == 0
+    assert str(state_value(parsed.initial_state)) == "#..#.#..##......###...###"
     assert len(parsed.notes) == len(live_sates)
     for state in live_sates:
         assert parsed.notes[state] == "#"
@@ -56,10 +56,10 @@ def test_parse_input(puzzle):
         (20, 325, "#....##....#####...#######....#.#..##"),
     ])
 def test_generation(parsed_puzzle, number_of_generations, total_sum, output_state):
-    parsed_puzzle.generate(number_of_generations)
+    calculated_sum, state = parsed_puzzle.generate(number_of_generations)
 
-    assert parsed_puzzle.state == output_state
-    assert parsed_puzzle.total_sum == total_sum
+    assert state == output_state
+    assert calculated_sum == total_sum
 
 
 @pytest.fixture
