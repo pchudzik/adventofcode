@@ -33,3 +33,6 @@ run-11:
 
 run-12:
 	pipenv run python 12_subterranean_sustainability.py
+
+run-13:
+	pipenv run python 13_mine_cart_madness.py
