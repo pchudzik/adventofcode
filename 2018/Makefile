@@ -36,3 +36,6 @@ run-12:
 
 run-13:
 	pipenv run python 13_mine_cart_madness.py
+
+run-14:
+	pipenv run python 14_chocolate_charts.py
