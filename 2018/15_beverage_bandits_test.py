@@ -5,7 +5,9 @@ module = importlib.import_module("15_beverage_bandits")
 
 parse = module.parse
 sort_by_reading_order = module.sort_by_reading_order
-play_game = module.play_game
+play_game1 = module.play_game1
+play_game2 = module.play_game2
+Unit = module.Unit
 
 
 def test_parse():
@@ -65,6 +67,20 @@ def test_move_order():
     ]
 
 
+def test_sort_order():
+    unit1 = Unit("G", (13, 8), 3)
+    unit2 = Unit("G", (11, 9), 3)
+    unit3 = Unit("G", (23, 11), 3)
+    unit4 = Unit("G", (12, 12), 3)
+    unit5 = Unit("G", (22, 12), 3)
+    unit6 = Unit("E", (23, 12), 3)
+    unit7 = Unit("G", (11, 13), 3)
+    unit8 = Unit("G", (21, 13), 3)
+    all_units = [unit8, unit7, unit6, unit5, unit4, unit3, unit2, unit1]
+
+    assert sorted(all_units, key=sort_by_reading_order) == [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8]
+
+
 def test_move():
     board = parse([
         "#########",
@@ -116,6 +132,70 @@ def test_move():
     assert board.goblins[5].position == (1, 4)
     assert board.goblins[6].position == (4, 4)
     assert board.goblins[7].position == (7, 5)
+
+
+def test_move_reading_order_1():
+    board = parse([
+        "#######",
+        "#.E...#",
+        "#.....#",
+        "#...G.#",
+        "#######",
+    ])
+
+    board.elves[0].do_turn(board)
+
+    assert board.elves[0].position == (3, 1)
+
+
+def test_move_reading_order_2():
+    board = parse([
+        "#########",
+        "#......G#",
+        "#G.G...E#",
+        "#########"
+    ])
+
+    board.tick()
+
+    assert board.elves[0].position == (7, 2)
+    assert board.goblins[0].position == (1, 1)
+    assert board.goblins[1].position == (7, 1)
+    assert board.goblins[2].position == (4, 2)
+
+
+def test_move_reading_order_3():
+    board = parse([
+        "#######",
+        "#######",
+        "#.E..G#",
+        "#.#####",
+        "#G#####",
+        "#######",
+        "#######",
+    ])
+
+    board.tick()
+
+    assert board.elves[0].position == (3, 2)
+
+
+def test_attack_order():
+    board = parse([
+        "####",
+        "#GG#",
+        "#.E#",
+        "####",
+    ])
+
+    board.tick()
+
+    assert board.goblins[0].position == (2, 1)
+    assert board.goblins[0].hp == 197
+    assert board.goblins[1].position == (1, 2)
+    assert board.goblins[1].hp == 200
+    assert board.elves[0].position == (2, 2)
+    assert board.elves[0].hp == 194
 
 
 def test_attack():
@@ -294,7 +374,7 @@ def test_attack_auto_0():
         "#######",
     ])
 
-    assert play_game(board) == 27730
+    assert play_game1(board) == 27730
 
     assert board.rounds == 47
     assert board.remaining_hit_points == 590
@@ -322,7 +402,7 @@ def test_attack_auto_1():
         "#######",
     ])
 
-    assert play_game(board) == 36334
+    assert play_game1(board) == 36334
     assert board.rounds == 37
     assert board.remaining_hit_points == 982
 
@@ -351,7 +431,7 @@ def test_attack_auto_2():
         "#######",
     ])
 
-    assert play_game(board) == 39514
+    assert play_game1(board) == 39514
     assert board.rounds == 46
     assert board.remaining_hit_points == 859
 
@@ -380,7 +460,7 @@ def test_attack_auto_3():
         "#######",
     ])
 
-    assert play_game(board) == 27755
+    assert play_game1(board) == 27755
     assert board.rounds == 35
     assert board.remaining_hit_points == 793
 
@@ -409,7 +489,7 @@ def test_attack_auto_4():
         "#######",
     ])
 
-    assert play_game(board) == 28944
+    assert play_game1(board) == 28944
     assert board.rounds == 54
     assert board.remaining_hit_points == 536
 
@@ -438,7 +518,7 @@ def test_attack_auto_5():
         "#########",
     ])
 
-    assert play_game(board) == 18740
+    assert play_game1(board) == 18740
     assert board.rounds == 20
     assert board.remaining_hit_points == 937
 
@@ -454,3 +534,75 @@ def test_attack_auto_5():
     assert board.goblins[3].hp == 200
     assert board.goblins[4].position == (2, 5)
     assert board.goblins[4].hp == 200
+
+
+def test_attack_force_elves_win_1():
+    puzzle = [
+        "#######",
+        "#.G...#",
+        "#...EG#",
+        "#.#.#G#",
+        "#..G#E#",
+        "#.....#",
+        "#######",
+    ]
+
+    assert play_game2(puzzle) == 4988
+
+
+def test_attack_force_elves_win_2():
+    puzzle = [
+        "#######",
+        "#E..EG#",
+        "#.#G.E#",
+        "#E.##E#",
+        "#G..#.#",
+        "#..E#.#",
+        "#######",
+    ]
+
+    assert play_game2(puzzle) == 31284
+
+
+def test_attack_force_elves_win_3():
+    puzzle = [
+        "#######",
+        "#E.G#.#",
+        "#.#G..#",
+        "#G.#.G#",
+        "#G..#.#",
+        "#...E.#",
+        "#######",
+    ]
+
+    assert play_game2(puzzle) == 3478
+
+
+def test_attack_force_elves_win_4():
+    puzzle = [
+        "#######",
+        "#.E...#",
+        "#.#..G#",
+        "#.###.#",
+        "#E#G#G#",
+        "#...#G#",
+        "#######",
+    ]
+
+    assert play_game2(puzzle) == 6474
+
+
+def test_attack_force_elves_win_5():
+    puzzle = [
+        "#########",
+        "#G......#",
+        "#.E.#...#",
+        "#..##..G#",
+        "#...##..#",
+        "#...#...#",
+        "#.G...G.#",
+        "#.....G.#",
+        "#########",
+    ]
+
+    assert play_game2(puzzle) == 1140

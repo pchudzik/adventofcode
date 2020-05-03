@@ -39,3 +39,6 @@ run-13:
 
 run-14:
 	pipenv run python 14_chocolate_charts.py
+
+run-15:
+	pipenv run python 15_beverage_bandits.py
