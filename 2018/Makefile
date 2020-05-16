@@ -42,3 +42,6 @@ run-14:
 
 run-15:
 	pipenv run python 15_beverage_bandits.py
+
+run-16:
+	pipenv run python 16_chronal_classification.py
