@@ -97,7 +97,7 @@ def part2(puzzle):
 
 
 if __name__ == "__main__":
-    with open("01_the_tyranny_of_the_rocket_equation.txt", "r") as file:
+    with open("_01_the_tyranny_of_the_rocket_equation.txt", "r") as file:
         puzzle_input = parse_input(file.readlines())
 
         print(f"part 1: {part1(puzzle_input)}")

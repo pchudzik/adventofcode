@@ -1,9 +1,6 @@
-import importlib
-
 import pytest
 
-module = importlib.import_module("02_1202_program_alarm")
-run_program = module.run_program
+from _02_1202_program_alarm import run_program
 
 
 @pytest.mark.parametrize(
@@ -18,7 +15,3 @@ run_program = module.run_program
 def test_run_program(initial_state, final_state):
     result = run_program(initial_state)
     assert tuple(result) == final_state
-
-
-def test_regular():
-    1 == 'b'

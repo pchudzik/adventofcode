@@ -1,12 +1,6 @@
-import importlib
-
 import pytest
 
-module = importlib.import_module("01_the_tyranny_of_the_rocket_equation")
-calculate_fuel = module.calculate_fuel
-calculate_fuel_with_fuel = module.calculate_fuel_with_fuel
-part1 = module.part1
-part2 = module.part2
+from _01_the_tyranny_of_the_rocket_equation import calculate_fuel, calculate_fuel_with_fuel, part1, part2
 
 
 @pytest.mark.parametrize("mass, expected_fuel", [
