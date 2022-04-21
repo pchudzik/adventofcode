@@ -1,6 +1,6 @@
 # Learning with adventofcode.com
 
-[![Build Status](https://travis-ci.org/pchudzik/adventofcode.svg?branch=master)](https://travis-ci.org/pchudzik/adventofcode)
+![Build Status](https://github.com/pchudzik/adventofcode/actions/workflows/pipeline.yaml/badge.svg)
 
 Implementation of exercises from [adventofcode.com](https://adventofcode.com).
 
