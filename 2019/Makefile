@@ -10,7 +10,11 @@ run-03:
 run-04:
 	pipenv run python _04_secure_container.py
 
+run-05:
+	pipenv run python _05_sunny_with_a_chance_of_asteroids.py
+
 all: run-01 \
 	 run-02 \
 	 run-03 \
-	 run-04
+	 run-04 \
+	 run-05
