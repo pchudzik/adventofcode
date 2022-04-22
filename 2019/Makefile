@@ -7,6 +7,10 @@ run-02:
 run-03:
 	pipenv run python _03_crossed_wires.py
 
+run-04:
+	pipenv run python _04_secure_container.py
+
 all: run-01 \
 	 run-02 \
-	 run-03
+	 run-03 \
+	 run-04
