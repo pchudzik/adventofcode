@@ -87,9 +87,9 @@ Your puzzle answer was 18325.
 Both parts of this puzzle are complete! They provide two gold stars: **
 """
 
-from datetime import datetime, timedelta
-from collections import defaultdict
 import re
+from collections import defaultdict
+from datetime import datetime, timedelta
 
 
 class Guard:
@@ -158,7 +158,7 @@ def find_most_lazy_guard_by_minute(guards):
 
 
 if __name__ == "__main__":
-    with open("04_repose_record.txt") as file:
+    with open("_04_repose_record.txt") as file:
         guards = parse(line.strip() for line in file.readlines())
         strategy1 = find_most_lazy_guard(guards.values())
         strategy2 = find_most_lazy_guard_by_minute(guards.values())

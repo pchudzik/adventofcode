@@ -1,8 +1,4 @@
-import importlib
-
-module = importlib.import_module("07_the_sum_of_its_parts")
-find_steps_order = module.find_steps_order
-parse_instructions = module.parse_instructions
+from _07_the_sum_of_its_parts import find_steps_order, parse_instructions
 
 instructions = [
     "Step C must be finished before step A can begin.",

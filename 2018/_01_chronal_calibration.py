@@ -95,7 +95,7 @@ def part2(numbers):
 
 
 if __name__ == "__main__":
-    with open("01_chronal_calibration.txt") as file:
+    with open("_01_chronal_calibration.txt") as file:
         lines = file.readlines()
         print(f"part 1: {part1(lines)}")
         print(f"part 2: {part2(lines)}")

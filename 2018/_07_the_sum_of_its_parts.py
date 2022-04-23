@@ -235,7 +235,7 @@ def parse_instructions(instructions):
 
 
 if __name__ == "__main__":
-    with open("07_the_sum_of_its_parts.txt") as file:
+    with open("_07_the_sum_of_its_parts.txt") as file:
         instructions = file.readlines()
         part1 = find_steps_order(instructions)
         part2 = find_steps_order(instructions, workers_count=5, base_working_time=60)

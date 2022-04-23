@@ -1,7 +1,4 @@
-import importlib
-
-module = importlib.import_module("08_memory_maneuver")
-parse = module.parse
+from _08_memory_maneuver import parse
 
 raw_nodes = "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2"
 

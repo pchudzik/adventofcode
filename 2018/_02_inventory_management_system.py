@@ -106,7 +106,7 @@ def find_box(ids):
 
 
 if __name__ == "__main__":
-    with open("02_inventory_management_system.txt") as file:
+    with open("_02_inventory_management_system.txt") as file:
         ids = list(map(str.strip, file.readlines()))
 
         print(f"part 1: {checksum(ids)}")

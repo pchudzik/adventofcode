@@ -140,7 +140,7 @@ def parse(raw_nodes):
 
 
 if __name__ == "__main__":
-    with open("08_memory_maneuver.txt") as file:
+    with open("_08_memory_maneuver.txt") as file:
         puzzle = file.readlines()[0].strip()
         root = parse(puzzle)
 

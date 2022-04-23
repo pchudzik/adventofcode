@@ -1,16 +1,15 @@
-import pytest
 import random
-import importlib
 
-module = importlib.import_module("13_mine_cart_madness")
-parse = module.parse
-carts_move_order = module.carts_move_order
-Direction = module.Direction
-Cart = module.Cart
-Track = module.Track
-detect_collisions = module.detect_collisions
-simulator = module.simulator
-simulator_last_cart_standing = module.simulator_last_cart_standing
+import pytest
+
+from _13_mine_cart_madness import parse, \
+    carts_move_order, \
+    Direction, \
+    Cart, \
+    Track, \
+    detect_collisions, \
+    simulator, \
+    simulator_last_cart_standing
 
 looped_track = r"""/->-\        
 |   |  /----\

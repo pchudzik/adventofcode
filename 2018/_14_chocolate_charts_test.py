@@ -1,10 +1,6 @@
-import importlib
 import pytest
 
-module = importlib.import_module("14_chocolate_charts")
-
-find_score_part1 = module.find_score_part1
-find_score_part2 = module.find_score_part2
+from _14_chocolate_charts import find_score_part1, find_score_part2
 
 
 @pytest.mark.parametrize(

@@ -1,13 +1,6 @@
-import importlib
 import pytest
 
-module = importlib.import_module("15_beverage_bandits")
-
-parse = module.parse
-sort_by_reading_order = module.sort_by_reading_order
-play_game1 = module.play_game1
-play_game2 = module.play_game2
-Unit = module.Unit
+from _15_beverage_bandits import parse, sort_by_reading_order, play_game1, play_game2, Unit
 
 
 def test_parse():

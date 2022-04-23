@@ -1,12 +1,9 @@
 import pytest
-import importlib
 
-module = importlib.import_module("11_chronal_charge")
-
-find_power_level = module.find_power_level
-find_largest_power_square = module.find_largest_power_square
-find_largest_power_square_any_size = module.find_largest_power_square_any_size
-calculate_grid = module.calculate_grid
+from _11_chronal_charge import find_power_level, \
+    find_largest_power_square, \
+    find_largest_power_square_any_size, \
+    calculate_grid
 
 
 @pytest.mark.parametrize("cell, serial_id, fuel_level", [

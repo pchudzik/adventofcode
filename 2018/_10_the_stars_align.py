@@ -170,6 +170,7 @@ Your puzzle answer was 10619.
 Both parts of this puzzle are complete! They provide two gold stars: **
 """
 
+
 class Message:
     def __init__(self, points):
         self.points = points
@@ -233,7 +234,7 @@ def parse(lines):
 
 if __name__ == "__main__":
 
-    with open("10_the_stars_align.txt") as file:
+    with open("_10_the_stars_align.txt") as file:
         points = parse(file.readlines())
         msg = Message(points)
 

@@ -434,7 +434,7 @@ def parse(puzzle: str):
 
 
 if __name__ == "__main__":
-    with open("13_mine_cart_madness.txt") as file:
+    with open("_13_mine_cart_madness.txt") as file:
         puzzle = "".join(file.readlines())
         track = Track(puzzle)
         carts_p1 = parse(puzzle)

@@ -173,7 +173,7 @@ class Garden:
 
 
 if __name__ == "__main__":
-    with open("12_subterranean_sustainability.txt")as file:
+    with open("_12_subterranean_sustainability.txt") as file:
         garden = parse(file.readlines())
 
         part1_sum, _ = garden.generate(20)

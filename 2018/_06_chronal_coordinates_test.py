@@ -1,14 +1,12 @@
-import importlib
 import pytest
 
-module = importlib.import_module("06_chronal_coordinates")
-parse_points = module.parse_points
-Point = module.Point
-AreaBounds = module.AreaBounds
-manhattan_distance = module.manhattan_distance
-calculate_area = module.calculate_area
-find_max_area = module.find_max_area
-find_all_safe_regions = module.find_all_safe_regions
+from _06_chronal_coordinates import parse_points, \
+    Point, \
+    AreaBounds, \
+    manhattan_distance, \
+    calculate_area, \
+    find_max_area, \
+    find_all_safe_regions
 
 A = 0
 B = 1
@@ -68,12 +66,6 @@ def test_find_max_area():
     points = parse_points(points_raw)
 
     assert find_max_area(points) == 17
-
-
-
-
-
-
 
 
 """

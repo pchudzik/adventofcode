@@ -1,10 +1,6 @@
 import pytest
-import importlib
 
-module = importlib.import_module("02_inventory_management_system")
-count_letters = module.count_letters
-checksum = module.checksum
-find_box = module.find_box
+from _02_inventory_management_system import count_letters, checksum, find_box
 
 
 @pytest.mark.parametrize("letters, twos, threes", [

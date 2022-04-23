@@ -95,9 +95,9 @@ Your puzzle answer was 514.
 Both parts of this puzzle are complete! They provide two gold stars: **
 """
 
-from enum import Enum
-from collections import namedtuple, defaultdict
 import re
+from collections import namedtuple, defaultdict
+from enum import Enum
 from typing import List
 
 
@@ -257,8 +257,8 @@ def run_program(program, commands_dictionary):
 
 
 if __name__ == "__main__":
-    with open("16_chronal_classification.part_1.txt") as part1_puzzle, \
-            open("16_chronal_classification.part_2.txt") as part2_puzzle:
+    with open("_16_chronal_classification.part_1.txt") as part1_puzzle, \
+            open("_16_chronal_classification.part_2.txt") as part2_puzzle:
         samples = part1_puzzle.read().split("\n\n")
         program = [l.strip() for l in part2_puzzle.readlines()]
 

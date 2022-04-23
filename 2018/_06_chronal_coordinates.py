@@ -203,7 +203,7 @@ def manhattan_distance(p1, p2):
 
 
 if __name__ == "__main__":
-    with open("06_chronal_coordinates.txt") as file:
+    with open("_06_chronal_coordinates.txt") as file:
         points = parse_points(file.readlines())
 
         print(f"part 1: {find_max_area(points)}")

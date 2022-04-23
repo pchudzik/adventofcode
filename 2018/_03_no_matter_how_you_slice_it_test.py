@@ -1,10 +1,4 @@
-import importlib
-
-module = importlib.import_module("03_no_matter_how_you_slice_it")
-parse = module.parse
-check_overlap = module.check_overlap
-find_overlapping_area = module.find_overlapping_area
-find_single_not_overlapping = module.find_single_not_overlapping
+from _03_no_matter_how_you_slice_it import parse, check_overlap, find_overlapping_area, find_single_not_overlapping
 
 puzzle = [
     "#1 @ 1,3: 4x4",

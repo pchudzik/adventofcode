@@ -1,11 +1,6 @@
-import importlib
 import pytest
 
-module = importlib.import_module("05_alchemical_reduction")
-reduce_polymer = module.reduce_polymer
-is_reducable = module.is_reducable
-total_reduce = module.total_reduce
-improve_polymer = module.improve_polymer
+from _05_alchemical_reduction import reduce_polymer, is_reducable, total_reduce, improve_polymer
 
 
 @pytest.mark.parametrize("in_polymer, out_polymer", [

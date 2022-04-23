@@ -1,10 +1,6 @@
-import importlib
 import pytest
 
-module = importlib.import_module("10_the_stars_align")
-
-parse = module.parse
-Message = module.Message
+from _10_the_stars_align import parse, Message
 
 sample = [
     "position=< 9,  1> velocity=< 0,  2>",
@@ -89,7 +85,6 @@ def test_message_print():
         "#...........#.........",
         "...#.......#..........",
     ]
-
 
     message.tick()
     assert message.snapshot() == [

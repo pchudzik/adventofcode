@@ -1,9 +1,6 @@
 import pytest
-import importlib
 
-module = importlib.import_module("09_marble_mania")
-Board = module.Board
-play = module.play
+from _09_marble_mania import play
 
 
 @pytest.mark.parametrize("players, last_marble, highest_score", [

@@ -1,8 +1,4 @@
-import importlib
-
-module = importlib.import_module("16_chronal_classification")
-Cmds = module.Cmds
-resolve_possible_commands = module.resolve_possible_commands
+from _16_chronal_classification import Cmds, resolve_possible_commands
 
 
 def test_sample():

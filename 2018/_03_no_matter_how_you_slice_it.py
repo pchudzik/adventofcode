@@ -125,7 +125,7 @@ def find_single_not_overlapping(claims):
 
 
 if __name__ == "__main__":
-    with open("03_no_matter_how_you_slice_it.txt") as file:
+    with open("_03_no_matter_how_you_slice_it.txt") as file:
         claims = parse(line.strip() for line in file.readlines())
 
         print(f"part 1: {find_overlapping_area(claims)}")

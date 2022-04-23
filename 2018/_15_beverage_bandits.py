@@ -1,5 +1,5 @@
-from collections import deque
 import sys
+from collections import deque
 
 """
 --- Day 15: Beverage Bandits ---
@@ -652,7 +652,7 @@ def play_game1(board: Board, allow_elf_death=True):
 
 
 if __name__ == "__main__":
-    with open("15_beverage_bandits.txt") as file:
+    with open("_15_beverage_bandits.txt") as file:
         puzzle = file.readlines()
         board = parse(puzzle)
         score = play_game1(board)

@@ -1,9 +1,6 @@
 import pytest
-import importlib
 
-module = importlib.import_module("12_subterranean_sustainability")
-parse = module.parse
-state_value = module.state_value
+from _12_subterranean_sustainability import parse, state_value
 
 
 def test_parse_input(puzzle):
