@@ -15,9 +15,14 @@ run-05:
 
 run-06:
 	pipenv run python _06_universal_orbit_map.py
+
+run-07:
+	pipenv run python _07_amplification_circuit.py
+
 all: run-01 \
 	 run-02 \
 	 run-03 \
 	 run-04 \
 	 run-05 \
-	 run-06
+	 run-06 \
+	 run-07
