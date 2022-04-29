@@ -19,10 +19,14 @@ run-06:
 run-07:
 	pipenv run python _07_amplification_circuit.py
 
+run-08:
+	pipenv run python _08_space_image_format.py
+
 all: run-01 \
 	 run-02 \
 	 run-03 \
 	 run-04 \
 	 run-05 \
 	 run-06 \
-	 run-07
+	 run-07 \
+	 run-08
